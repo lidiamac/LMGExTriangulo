@@ -34,8 +34,22 @@ public class Triangulo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int lado1, lado2, lado3;
+		lado1 = Integer.parseInt(request.getParameter("lado1"));
+		lado2 = Integer.parseInt(request.getParameter("lado2"));
+		lado3 = Integer.parseInt(request.getParameter("lado3"));
+		
+		if(lado1 > lado2 - lado3 && lado2 > lado1 - lado3 && lado3 > lado1 - lado2) {
+			if(lado1 < lado2 + lado3 && lado2 < lado1 + lado3 && lado3 < lado1 + lado2) {
+				response.getWriter().println("É um triangulo!: ");
+			}
+			
+		}
+		
 	}
+	
+//	public int verificarExistencia(HttpServletRequest request, HttpServletResponse response) {
+//		
+//	}
 
 }
