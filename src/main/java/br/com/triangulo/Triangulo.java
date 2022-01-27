@@ -34,22 +34,27 @@ public class Triangulo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int lado1, lado2, lado3;
+		Integer lado1, lado2, lado3;
 		lado1 = Integer.parseInt(request.getParameter("lado1"));
 		lado2 = Integer.parseInt(request.getParameter("lado2"));
 		lado3 = Integer.parseInt(request.getParameter("lado3"));
 		
-		if(lado1 > lado2 - lado3 && lado2 > lado1 - lado3 && lado3 > lado1 - lado2) {
-			if(lado1 < lado2 + lado3 && lado2 < lado1 + lado3 && lado3 < lado1 + lado2) {
-				response.getWriter().println("É um triangulo!: ");
-			}
-			
-		}
 		
-	}
+//		if(request.getParameterValues(lado1.toString()) == null) {
+//			response.getWriter().println("valor1 vazio ");
+		 if(lado1 > lado2 - lado3 && lado2 > lado1 - lado3 && lado3 > lado1 - lado2) {
+				if(lado1 < lado2 + lado3 && lado2 < lado1 + lado3 && lado3 < lado1 + lado2) {
+					if(lado1.equals(lado2) && lado1.equals(lado3)) {
+						response.getWriter().println("TRIÂNGULO EQUILÁTERO ");
+					} else if (lado1.equals(lado2) && lado1 != lado3 || lado2.equals(lado3) && lado3 != lado1 || lado3.equals(lado1) && lado3 != lado2 ){
+						response.getWriter().println("TRIÂNGULO ISOSCELES ");
+					} else {
+						response.getWriter().println("TRIÂNGULO ESCALENO ");
+					}
+				}
+			} else {
+				response.getWriter().println("NÃO É UM TRIÂNGULO! ");
+			}
+		}
 	
-//	public int verificarExistencia(HttpServletRequest request, HttpServletResponse response) {
-//		
-//	}
-
 }
